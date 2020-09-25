@@ -4,7 +4,7 @@ namespace ConsoleApplication
 {
     class Program
     {
-        static void myIntro()
+        static void MyIntro()
         {
             // Store variables
             string name = "Chris Van Ry";
@@ -20,7 +20,7 @@ namespace ConsoleApplication
             // Display current date, but not time
             Console.WriteLine("Today is {0}.", date);
         }
-        static void daysUntilChristmas()
+        static void DaysUntilChristmas()
         {
             // Calculate days until Christmas
             DateTime christmas = new DateTime(2020, 12, 25);
@@ -30,7 +30,7 @@ namespace ConsoleApplication
             Console.WriteLine("There are {0} days until Christmas.", daysLeft);
         }
 
-        static void programExample()
+        static void ProgramExample()
         {
             double width, height, woodLength, glassArea;
             string widthString, heightString;
@@ -51,11 +51,11 @@ namespace ConsoleApplication
             Console.WriteLine("The length of the wood is " + woodLength + " feet.");
             Console.WriteLine("The area of the glass is " + glassArea + " square meters.");
         }
-        static void Main(string[] args)
+        static void Main()
         {
-            myIntro();
-            daysUntilChristmas();
-            programExample();
+            MyIntro();
+            DaysUntilChristmas();
+            ProgramExample();
 
             // Don't automatically terminate program
             Console.WriteLine("To exit, press any key.");
