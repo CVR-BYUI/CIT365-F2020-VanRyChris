@@ -61,6 +61,8 @@ namespace MathQuiz
         public void StartTheQuiz()
         {
             // Reset colors from previous attempts
+            timeLabel.BackColor = SystemColors.Control;
+            timeLabel.ForeColor = Color.Black;
             sum.BackColor = Color.White;
             sum.ForeColor = Color.Black;
             difference.BackColor = Color.White;
