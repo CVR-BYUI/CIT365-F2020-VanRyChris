@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,15 +39,9 @@
             this.desktopComboBox = new System.Windows.Forms.ComboBox();
             this.orderComboBox = new System.Windows.Forms.ComboBox();
             this.submitOrderButton = new System.Windows.Forms.Button();
-            this.nameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.widthErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.depthErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.drawerErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.desktopErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.orderErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.surfaceAreaProduct = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -57,7 +50,7 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.summarySurfaceArea = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -71,21 +64,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.widthTextBox = new System.Windows.Forms.NumericUpDown();
-            this.depthTextBox = new System.Windows.Forms.NumericUpDown();
             this.currentDate = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nameErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.widthErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depthErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawerErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.desktopErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderErrorProvider)).BeginInit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.depthTextBox = new System.Windows.Forms.TextBox();
+            this.widthTextBox = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.widthTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depthTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -214,32 +201,9 @@
             this.submitOrderButton.UseVisualStyleBackColor = true;
             this.submitOrderButton.Click += new System.EventHandler(this.submitOrderButton_Click);
             // 
-            // nameErrorProvider
-            // 
-            this.nameErrorProvider.ContainerControl = this;
-            // 
-            // widthErrorProvider
-            // 
-            this.widthErrorProvider.ContainerControl = this;
-            // 
-            // depthErrorProvider
-            // 
-            this.depthErrorProvider.ContainerControl = this;
-            // 
-            // drawerErrorProvider
-            // 
-            this.drawerErrorProvider.ContainerControl = this;
-            // 
-            // desktopErrorProvider
-            // 
-            this.desktopErrorProvider.ContainerControl = this;
-            // 
-            // orderErrorProvider
-            // 
-            this.orderErrorProvider.ContainerControl = this;
-            // 
             // cancelButton
             // 
+            this.cancelButton.CausesValidation = false;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Location = new System.Drawing.Point(398, 754);
             this.cancelButton.Name = "cancelButton";
@@ -254,6 +218,7 @@
             this.groupBox1.Controls.Add(this.depthTextBox);
             this.groupBox1.Controls.Add(this.widthTextBox);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.surfaceAreaProduct);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
@@ -265,14 +230,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Desk Surface Area";
             // 
-            // label8
+            // surfaceAreaProduct
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(353, 178);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 17);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "-";
+            this.surfaceAreaProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.surfaceAreaProduct.Location = new System.Drawing.Point(299, 168);
+            this.surfaceAreaProduct.Name = "surfaceAreaProduct";
+            this.surfaceAreaProduct.Size = new System.Drawing.Size(127, 28);
+            this.surfaceAreaProduct.TabIndex = 11;
+            this.surfaceAreaProduct.Text = "-";
+            this.surfaceAreaProduct.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -312,11 +278,12 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Controls.Add(this.label26);
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.summarySurfaceArea);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.label17);
@@ -347,46 +314,51 @@
             this.label26.Size = new System.Drawing.Size(16, 24);
             this.label26.TabIndex = 26;
             this.label26.Text = "-";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(378, 359);
+            this.label25.Location = new System.Drawing.Point(378, 376);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(16, 24);
             this.label25.TabIndex = 25;
             this.label25.Text = "-";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(378, 298);
+            this.label24.Location = new System.Drawing.Point(378, 315);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(16, 24);
             this.label24.TabIndex = 24;
             this.label24.Text = "-";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(379, 237);
+            this.label23.Location = new System.Drawing.Point(379, 254);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(16, 24);
             this.label23.TabIndex = 23;
             this.label23.Text = "-";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label22
+            // summarySurfaceArea
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(378, 176);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(16, 24);
-            this.label22.TabIndex = 22;
-            this.label22.Text = "-";
+            this.summarySurfaceArea.AutoSize = true;
+            this.summarySurfaceArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summarySurfaceArea.Location = new System.Drawing.Point(378, 176);
+            this.summarySurfaceArea.Name = "summarySurfaceArea";
+            this.summarySurfaceArea.Size = new System.Drawing.Size(16, 24);
+            this.summarySurfaceArea.TabIndex = 22;
+            this.summarySurfaceArea.Text = "-";
+            this.summarySurfaceArea.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label21
             // 
@@ -397,6 +369,7 @@
             this.label21.Size = new System.Drawing.Size(40, 24);
             this.label21.TabIndex = 21;
             this.label21.Text = "200";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label18
             // 
@@ -412,7 +385,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(352, 237);
+            this.label17.Location = new System.Drawing.Point(352, 254);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(20, 24);
             this.label17.TabIndex = 19;
@@ -422,7 +395,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(352, 298);
+            this.label16.Location = new System.Drawing.Point(352, 315);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(20, 24);
             this.label16.TabIndex = 18;
@@ -432,7 +405,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(352, 359);
+            this.label15.Location = new System.Drawing.Point(352, 376);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(20, 24);
             this.label15.TabIndex = 17;
@@ -482,7 +455,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(131, 359);
+            this.label12.Location = new System.Drawing.Point(131, 376);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(157, 24);
             this.label12.TabIndex = 8;
@@ -492,7 +465,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(110, 237);
+            this.label11.Location = new System.Drawing.Point(110, 254);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(178, 24);
             this.label11.TabIndex = 7;
@@ -502,7 +475,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(135, 298);
+            this.label10.Location = new System.Drawing.Point(135, 315);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(153, 24);
             this.label10.TabIndex = 6;
@@ -512,33 +485,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(164, 176);
+            this.label9.Location = new System.Drawing.Point(76, 176);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(124, 24);
+            this.label9.Size = new System.Drawing.Size(212, 24);
             this.label9.TabIndex = 5;
-            this.label9.Text = "Surface Area:";
-            // 
-            // widthTextBox
-            // 
-            this.widthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.widthTextBox.Location = new System.Drawing.Point(268, 49);
-            this.widthTextBox.Name = "widthTextBox";
-            this.widthTextBox.Size = new System.Drawing.Size(189, 29);
-            this.widthTextBox.TabIndex = 0;
-            this.widthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.widthTextBox.ValueChanged += new System.EventHandler(this.widthTextBoxInput);
-            this.widthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.widthTextBoxKeypress);
-            // 
-            // depthTextBox
-            // 
-            this.depthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depthTextBox.Location = new System.Drawing.Point(268, 110);
-            this.depthTextBox.Name = "depthTextBox";
-            this.depthTextBox.Size = new System.Drawing.Size(189, 29);
-            this.depthTextBox.TabIndex = 1;
-            this.depthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.depthTextBox.ValueChanged += new System.EventHandler(this.depthTextBoxInput);
-            this.depthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.depthTextBoxKeypress);
+            this.label9.Text = "Additional Surface Area:";
             // 
             // currentDate
             // 
@@ -549,6 +500,47 @@
             this.currentDate.TabIndex = 19;
             this.currentDate.Text = "Today\'s Date";
             this.currentDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(424, 168);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 28);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "in²";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // depthTextBox
+            // 
+            this.depthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.depthTextBox.Location = new System.Drawing.Point(268, 109);
+            this.depthTextBox.Name = "depthTextBox";
+            this.depthTextBox.Size = new System.Drawing.Size(189, 29);
+            this.depthTextBox.TabIndex = 1;
+            this.depthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.depthTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.validateDepth);
+            this.depthTextBox.Validated += new System.EventHandler(this.calcSurfaceArea);
+            // 
+            // widthTextBox
+            // 
+            this.widthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.widthTextBox.Location = new System.Drawing.Point(268, 48);
+            this.widthTextBox.Name = "widthTextBox";
+            this.widthTextBox.Size = new System.Drawing.Size(189, 29);
+            this.widthTextBox.TabIndex = 0;
+            this.widthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.widthTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.validateWidth);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(146, 200);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(142, 24);
+            this.label22.TabIndex = 27;
+            this.label22.Text = "(if over 1000 in²)";
             // 
             // AddQuote
             // 
@@ -564,17 +556,12 @@
             this.Controls.Add(this.submitOrderButton);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddQuote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MegaDesk-VanRy | Add New Quote";
-            ((System.ComponentModel.ISupportInitialize)(this.nameErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.widthErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depthErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawerErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.desktopErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderErrorProvider)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -583,8 +570,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.widthTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depthTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,16 +588,10 @@
         private System.Windows.Forms.ComboBox desktopComboBox;
         private System.Windows.Forms.ComboBox orderComboBox;
         private System.Windows.Forms.Button submitOrderButton;
-        private System.Windows.Forms.ErrorProvider nameErrorProvider;
-        private System.Windows.Forms.ErrorProvider widthErrorProvider;
-        private System.Windows.Forms.ErrorProvider depthErrorProvider;
-        private System.Windows.Forms.ErrorProvider drawerErrorProvider;
-        private System.Windows.Forms.ErrorProvider desktopErrorProvider;
-        private System.Windows.Forms.ErrorProvider orderErrorProvider;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label surfaceAreaProduct;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -632,10 +611,12 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label summarySurfaceArea;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.NumericUpDown depthTextBox;
-        private System.Windows.Forms.NumericUpDown widthTextBox;
         private System.Windows.Forms.Label currentDate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox depthTextBox;
+        private System.Windows.Forms.TextBox widthTextBox;
+        private System.Windows.Forms.Label label22;
     }
 }

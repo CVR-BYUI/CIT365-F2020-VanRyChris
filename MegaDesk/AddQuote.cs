@@ -11,8 +11,13 @@ using System.Windows.Forms;
 namespace MegaDesk
 {
     public partial class AddQuote : Form
-    {      
-        //
+    {
+        // Validation variables
+        bool validName = false;
+        bool validWidth = false;
+        bool validDepth = false;
+
+
         public AddQuote()
         {
             InitializeComponent();
@@ -27,6 +32,93 @@ namespace MegaDesk
             MainMenu mm = new MainMenu();
             mm.ShowDialog();
             this.Close();
+        }
+
+        // Form validation for name, width, and depth
+        private void validateName(object sender, CancelEventArgs e)
+        {
+            // Name not left blank
+            if (!string.IsNullOrWhiteSpace(nameTextBox.Text))
+            {
+                validName = true;
+                return;
+            }
+        }
+
+        private void validateWidth(object sender, CancelEventArgs e)
+        {
+
+            // numbers outside of range
+            if (int.TryParse(widthTextBox.Text, out int widthInput) == true)
+            {
+                if (widthInput < Desk.MINWIDTH || widthInput > Desk.MAXWIDTH)
+                {
+                    MessageBox.Show("Width must be between 12 and 96.");
+                    widthTextBox.SelectAll();
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            // left blank
+            if (string.IsNullOrWhiteSpace(widthTextBox.Text))
+            {
+                MessageBox.Show("Please enter the width.");
+                e.Cancel = true;
+                return;
+            }
+
+            // valid input
+            validWidth = true;
+            return;
+
+        }
+
+        private void validateDepth(object sender, CancelEventArgs e)
+        {
+            // numbers outside of range
+            if (int.TryParse(depthTextBox.Text, out int depthInput) == true)
+            {
+                if (depthInput < Desk.MINDEPTH || depthInput > Desk.MAXDEPTH)
+                {
+                    MessageBox.Show("Depth must be between 12 and 48.");
+                    depthTextBox.SelectAll();
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            // left blank
+            if (string.IsNullOrWhiteSpace(depthTextBox.Text))
+            {
+                MessageBox.Show("Please enter the depth.");
+                e.Cancel = true;
+                return;
+            }
+
+            // valid input
+            validDepth = true;
+            return;
+        }
+
+        // Calculate surface area and display in summary
+        private void calcSurfaceArea(object sender, EventArgs e)
+        {
+            int surfaceArea = 0;
+            int extraSurfaceArea = 0;
+
+            if (validWidth == true && validDepth == true)
+            {
+                surfaceArea = int.Parse(widthTextBox.Text) * int.Parse(depthTextBox.Text);
+                surfaceAreaProduct.Text = surfaceArea.ToString();
+                
+            }
+
+            if (surfaceArea > Desk.INCLSURFACEAREA)
+            {
+                extraSurfaceArea = surfaceArea - Desk.INCLSURFACEAREA;
+                summarySurfaceArea.Text = extraSurfaceArea.ToString();
+            }
         }
 
         private void submitOrderButton_Click(object sender, EventArgs e)
@@ -82,98 +174,7 @@ namespace MegaDesk
             MainMenu mm = new MainMenu();
             mm.ShowDialog();
             this.Close();
+
         }
-        
-        // Width validation
-        private void widthTextBoxInput(object sender, EventArgs e)
-        {
-            if (int.TryParse(widthTextBox.Text, out int widthInput) == true)
-            {
-                // Input too low or high
-                if (widthInput < Desk.MINWIDTH || widthInput > Desk.MAXWIDTH)
-                {
-                    widthTextBox.Text = String.Empty;
-                    widthTextBox.Focus();
-                    widthErrorProvider.SetError(widthTextBox, $"Please enter numbers only, between {Desk.MINWIDTH} and {Desk.MAXWIDTH} inches.");
-                }
-                else
-                {
-                    // Reset error
-                    widthErrorProvider.SetError(widthTextBox, "");
-                }
-
-            }
-            // Input isn't in digit format
-            else if (int.TryParse(widthTextBox.Text, out widthInput) == false && widthTextBox.Text.Length != 0)
-            {
-                widthTextBox.Text = String.Empty;
-                widthTextBox.Focus();
-                widthErrorProvider.SetError(widthTextBox, $"Please enter numbers only, between {Desk.MINWIDTH} and {Desk.MAXWIDTH} inches.");
-            }
-            else
-            {
-                // Reset error
-                widthErrorProvider.SetError(widthTextBox, "");
-            }
-        }
-        
-        // Width validation - keypress event
-        private void widthTextBoxKeypress (object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsControl(e.KeyChar) == false && Char.IsDigit(e.KeyChar) == false)
-            {
-                e.Handled = true;
-                widthTextBox.Focus();
-                widthErrorProvider.SetError(widthTextBox, $"Please enter numbers only, between {Desk.MINWIDTH} and {Desk.MAXWIDTH} inches.");
-            }
-        }
-
-        // Depth validation
-        private void depthTextBoxInput(object sender, EventArgs e)
-        {
-            if (int.TryParse(depthTextBox.Text, out int depthInput) == true)
-            {
-                // Input too low or high
-                if (depthInput < Desk.MINDEPTH || depthInput > Desk.MAXDEPTH)
-                {
-                    depthTextBox.Text = String.Empty;
-                    depthTextBox.Focus();
-                    depthErrorProvider.SetError(depthTextBox, $"Please enter numbers only, between {Desk.MINDEPTH} and {Desk.MAXDEPTH} inches.");
-                }
-                else
-                {
-                    // Reset error
-                    depthErrorProvider.SetError(depthTextBox, "");
-                }
-            }
-            // Input isn't in digit format
-            else if (int.TryParse(depthTextBox.Text, out depthInput) == false && depthTextBox.Text.Length != 0)
-            {
-                depthTextBox.Text = String.Empty;
-                depthTextBox.Focus();
-                depthErrorProvider.SetError(depthTextBox, $"Please enter numbers only, between {Desk.MINDEPTH} and {Desk.MAXDEPTH} inches.");
-            }
-            else
-            {
-                // Reset error
-                depthErrorProvider.SetError(depthTextBox, "");
-            }
-        }
-
-        // Depth validation - keypress event
-        private void depthTextBoxKeypress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsControl(e.KeyChar) == false && Char.IsDigit(e.KeyChar) == false)
-            {
-                e.Handled = true;
-                depthTextBox.Focus();
-                depthErrorProvider.SetError(depthTextBox, $"Please enter numbers only, between {Desk.MINDEPTH} and {Desk.MAXDEPTH} inches.");
-            }
-        }
-
-
-
-
-
     }
 }

@@ -13,6 +13,7 @@ namespace MegaDesk
         public const int MAXWIDTH = 96;
         public const int MINDEPTH = 12;
         public const int MAXDEPTH = 48;
+        public const int INCLSURFACEAREA = 1000;
 
         // Object constructor
         public int Width { get; set; }

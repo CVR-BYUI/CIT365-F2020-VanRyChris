@@ -101,6 +101,7 @@
             this.Controls.Add(this.SearchQuotesButton);
             this.Controls.Add(this.ViewQuotesButton);
             this.Controls.Add(this.AddQuoteButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainMenu";
